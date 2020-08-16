@@ -1,12 +1,22 @@
-import { StyleSheet } from 'react-native'
+import styled from 'styled-components/native'
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-})
+export const Wrapper = styled.View`
+  flex: 1;
+  background-color: yellow;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+`
 
-export default styles
+export const StyledTitle = styled.Text`
+  color: red;
+  font-weight: bold;
+  font-size: 30px;
+`
+
+export const StyledParagraph = styled.Text`
+  color: blue;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 30px;
+`
