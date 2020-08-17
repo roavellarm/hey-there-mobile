@@ -1,6 +1,6 @@
 import React from 'react'
-import Landing from './src/pages/Landing'
+import Router from './src/Router'
 
-const App: React.FC = () => <Landing />
+const App: React.FC = () => <Router />
 
 export default App
