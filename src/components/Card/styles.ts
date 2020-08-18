@@ -1,82 +1,75 @@
-import { StyleSheet } from 'react-native'
+import styled from 'styled-components/native'
 import { lighten } from 'polished'
 
-export default StyleSheet.create({
-  card: {
-    padding: 8,
-    borderRadius: 4,
-    backgroundColor: lighten(0.1, '#241b28'),
-    flexDirection: 'row',
-    alignItems: 'center',
-    width: '100%',
-    maxWidth: 500,
-    marginBottom: 2,
-  },
+export const Container = styled.View`
+  padding: 8px;
+  border-radius: 4;
+  background-color: ${lighten(0.1, '#241b28')};
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  max-width: 500;
+  margin-bottom: 2;
+`
 
-  avatar: {
-    width: 50,
-    height: 50,
-    borderRadius: 30,
-    marginRight: 6,
-  },
+export const Avatar = styled.Image`
+  width: 50px;
+  height: 50px;
+  border-radius: 30;
+  margin-right: 6px;
+`
 
-  textsContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
+export const TextsContainer = styled.View`
+  flex: 1;
+  flex-direction: row;
+  justify-content: space-between;
+`
 
-  texts: {
-    flex: 1,
-  },
+export const Texts = styled.View`
+  flex: 1;
+`
 
-  name: {
-    fontFamily: 'Lato_700Bold',
-    letterSpacing: 0.4,
-    color: '#fff',
-    fontSize: 16,
-    paddingBottom: 8,
-  },
+export const Name = styled.Text`
+  font-family: 'Lato_700Bold';
+  letter-spacing: 0.4px;
+  color: #fff;
+  font-size: 16px;
+  padding-bottom: 8px;
+`
 
-  textMsg: {
-    fontFamily: 'Lato_400Regular',
-    letterSpacing: 0.4,
-    color: lighten(0.5, '#241b28'),
-    fontSize: 16,
-  },
+export const TextMsg = styled.Text`
+  font-family: 'Lato_400Regular';
+  letter-spacing: 0.4px;
+  color: ${lighten(0.5, '#241b28')};
+  font-size: 16px;
+`
 
-  timeContainer: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    minWidth: 65,
-  },
+export const TimeContainer = styled.View`
+  align-items: center;
+  justify-content: center;
+  min-width: 65;
+`
 
-  timeText: {
-    fontFamily: 'Lato_700Bold',
-    letterSpacing: 0.4,
-    color: '#32A852',
-    marginBottom: 8,
-  },
+export const TimeText = styled.Text`
+  font-family: 'Lato_700Bold';
+  letter-spacing: 0.4px;
+  color: ${({ hasNewMessages }: { hasNewMessages: boolean }) =>
+    hasNewMessages ? '#32A852' : 'grey'};
+  margin-bottom: 8px;
+`
 
-  timeText2: {
-    fontFamily: 'Lato_700Bold',
-    letterSpacing: 0.4,
-    color: 'grey',
-  },
+export const NewMsgsCircle = styled.View`
+  background-color: #32a852;
+  border-radius: 30;
+  width: 20;
+  height: 20;
+  align-items: center;
+  justify-content: center;
+`
 
-  newMsgsCircle: {
-    backgroundColor: '#32A852',
-    borderRadius: 30,
-    width: 20,
-    height: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-
-  newMsgs: {
-    fontFamily: 'Lato_700Bold',
-    letterSpacing: 0.4,
-    fontSize: 14,
-    color: '#fff',
-  },
-})
+export const NewMsgs = styled.Text`
+  font-family: 'Lato_700Bold';
+  letter-spacing: 0.4px;
+  font-size: 14px;
+  color: #fff;
+`

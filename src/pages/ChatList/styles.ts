@@ -1,11 +1,11 @@
-import { StyleSheet } from 'react-native'
+import styled from 'styled-components/native'
 
-export default StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'flex-start',
-    backgroundColor: '#241b28',
-    padding: 6,
-    alignItems: 'center',
-  },
-})
+const Container = styled.View`
+  flex: 1;
+  justify-content: flex-start;
+  background-color: #241b28;
+  padding: 6px;
+  align-items: center;
+`
+
+export default Container
