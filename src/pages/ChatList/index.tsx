@@ -1,75 +1,16 @@
 import React from 'react'
-import Row from 'components/Row'
-import Column from 'components/Column'
-import Typography from 'components/Typography'
-import Avatar from '../../components/Avatar'
+import { View } from 'react-native'
+import Card, { CardInfo } from '../../components/Card'
 import chatList from '../../mocks/chatList'
-import StyledNumber from './styles'
-
-interface User {
-  chatId: string
-  name: string
-  avatar: File
-  msgPreview: string
-  time: string
-  newMessages: string
-}
+import styles from './styles'
 
 const ChatList: React.FC = () => {
-  // const { push } = useHistory()
-
-  const handleClick = (chatId: string) => {
-    // eslint-disable-next-line no-alert
-    // push(`/chat/${chatId}`)
-    console.log(chatId)
-  }
-
   return (
-    <Row>
-      {chatList.map((user: User) => {
-        return (
-          <Row
-            key={user.name}
-            backgroundColor="primary"
-            radius="8px"
-            alignItems="center"
-            margin="2px"
-            onClick={() => handleClick(user.chatId)}
-          >
-            <Column size={12} margin="8px 2%">
-              <Column size={1}>
-                <Avatar src={user.avatar} />
-              </Column>
-
-              <Column size={9} alignItems="left" direction="column">
-                <Typography size="md" weight="bold">
-                  {user.name}
-                </Typography>
-                <Typography color="secondary">{user.msgPreview}</Typography>
-              </Column>
-
-              <Column size={2} direction="column">
-                <Typography
-                  size="sm"
-                  weight={user.newMessages !== '0' ? 'bold' : 'regular'}
-                  color={user.newMessages !== '0' ? '#32a852' : 'grey'}
-                >
-                  {user.time}
-                </Typography>
-
-                {user.newMessages !== '0' ? (
-                  <StyledNumber>
-                    <Typography size="sm" weight="black">
-                      {user.newMessages}
-                    </Typography>
-                  </StyledNumber>
-                ) : null}
-              </Column>
-            </Column>
-          </Row>
-        )
+    <View style={styles.container}>
+      {chatList.map((info: CardInfo) => {
+        return <Card key={info.chatId} cardInfo={info} />
       })}
-    </Row>
+    </View>
   )
 }
 

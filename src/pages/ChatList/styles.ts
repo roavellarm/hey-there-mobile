@@ -1,14 +1,11 @@
-import styled from 'styled-components'
+import { StyleSheet } from 'react-native'
 
-const StyledNumber = styled.div`
-  display: flex;
-  height: 20px;
-  width: 20px;
-  background: #32a852;
-  padding: 4px;
-  border-radius: 100%;
-  justify-content: center;
-  align-items: center;
-`
-
-export default StyledNumber
+export default StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'flex-start',
+    backgroundColor: '#241b28',
+    padding: 6,
+    alignItems: 'center',
+  },
+})

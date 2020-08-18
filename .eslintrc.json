@@ -16,9 +16,11 @@
   "plugins": ["react", "@typescript-eslint", "prettier"],
   "rules": {
     "prettier/prettier": "error",
+    "camelcase": "off",
     "react/style-prop-object": "off",
     "react/jsx-filename-extension": ["off", { "extensions": [".js", ".jsx"] }],
     "@typescript-eslint/explicit-function-return-type": "off",
+    "react/jsx-props-no-spreading": "off",
     "import/extensions": [
       "error",
       "ignorePackages",
