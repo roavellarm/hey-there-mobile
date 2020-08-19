@@ -4,7 +4,7 @@ const profile = {
   name: 'Jessica dos Santos',
   email: 'jessica@gmail.com',
   avatarImg: image1,
-  statusMessage: 'Hellow, I am using Hey There',
+  statusMessage: "Hello, I'm using Hey There",
 }
 
 export default profile

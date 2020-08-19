@@ -7,7 +7,7 @@ import image6 from './images/06.jpeg'
 
 const chatList = [
   {
-    chatId: 'eureka9',
+    chatId: 'eureka1',
     name: 'Jessica dos Santos',
     avatar: image1,
     msgPreview: 'You: Poxa vida! :(',
@@ -15,7 +15,7 @@ const chatList = [
     newMessages: '5',
   },
   {
-    chatId: 'eureka9',
+    chatId: 'eureka2',
     name: 'Maria',
     avatar: image2,
     msgPreview: 'Maria: E ai gatinho? Tudo bem?',
@@ -23,7 +23,7 @@ const chatList = [
     newMessages: '2',
   },
   {
-    chatId: 'eureka9',
+    chatId: 'eureka3',
     name: 'Rebeca',
     avatar: image3,
     msgPreview: 'You: Poxa vida! :(',
@@ -31,7 +31,7 @@ const chatList = [
     newMessages: '0',
   },
   {
-    chatId: 'eureka9',
+    chatId: 'eureka4',
     name: 'Gaby',
     avatar: image4,
     msgPreview: 'Gaby: Bora tomar uma ceva?',
@@ -39,7 +39,7 @@ const chatList = [
     newMessages: '0',
   },
   {
-    chatId: 'eureka9',
+    chatId: 'eureka5',
     name: 'Paty',
     avatar: image5,
     msgPreview: 'You: Nem te conto o que me aconteceu...',
@@ -47,7 +47,7 @@ const chatList = [
     newMessages: '0',
   },
   {
-    chatId: 'eureka9',
+    chatId: 'eureka6',
     name: 'Mya',
     avatar: image6,
     msgPreview: 'Mya: Pois é kkkk!!',
