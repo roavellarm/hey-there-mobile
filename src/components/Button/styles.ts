@@ -11,6 +11,7 @@ export const StyledButton = styled(RectButton)`
 
 export const Text = styled.Text`
   font-family: 'Lato_700Bold';
+  letter-spacing: 0.4px;
   font-size: 18px;
   color: #fff;
 `
