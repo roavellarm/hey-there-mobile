@@ -1,8 +1,8 @@
 import React from 'react'
 import { ImageSourcePropType } from 'react-native'
+import Avatar from '../Avatar'
 import {
   Container,
-  Avatar,
   TextsContainer,
   Texts,
   Name,
@@ -31,7 +31,7 @@ const Card: React.FC<CardProps> = ({ cardInfo }: { cardInfo: CardInfo }) => {
 
   return (
     <Container>
-      <Avatar source={avatar} />
+      <Avatar source={avatar} size={50} />
       <TextsContainer>
         <Texts>
           <Name>{name}</Name>

@@ -3,20 +3,13 @@ import { lighten } from 'polished'
 
 export const Container = styled.View`
   padding: 8px;
-  border-radius: 4;
+  border-radius: 4px;
   background-color: ${lighten(0.1, '#241b28')};
   flex-direction: row;
   align-items: center;
   width: 100%;
-  max-width: 500;
-  margin-bottom: 2;
-`
-
-export const Avatar = styled.Image`
-  width: 50px;
-  height: 50px;
-  border-radius: 30;
-  margin-right: 6px;
+  max-width: 500px;
+  margin-bottom: 2px;
 `
 
 export const TextsContainer = styled.View`
@@ -47,7 +40,7 @@ export const TextMsg = styled.Text`
 export const TimeContainer = styled.View`
   align-items: center;
   justify-content: center;
-  min-width: 65;
+  min-width: 65px;
 `
 
 export const TimeText = styled.Text`
@@ -60,9 +53,9 @@ export const TimeText = styled.Text`
 
 export const NewMsgsCircle = styled.View`
   background-color: #32a852;
-  border-radius: 30;
-  width: 20;
-  height: 20;
+  border-radius: 30px;
+  width: 20px;
+  height: 20px;
   align-items: center;
   justify-content: center;
 `
