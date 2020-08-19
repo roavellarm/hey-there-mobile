@@ -12,7 +12,7 @@ export const HeaderContainer = styled.View`
 
 export const Text = styled.Text`
   font-family: 'Lato_700Bold';
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   font-size: 20px;
   color: #fff;
 `

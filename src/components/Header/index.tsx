@@ -14,6 +14,9 @@ const Header: React.FC = () => {
       <Link to="/Profile">
         <Text>Profile</Text>
       </Link>
+      <Link to="/Join">
+        <Text>Join</Text>
+      </Link>
       <Icon name="power-off" color="#fff" size={20} />
     </HeaderContainer>
   )
