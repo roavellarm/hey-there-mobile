@@ -2,26 +2,24 @@ import React from 'react'
 import { Label, StyledInput } from './styles'
 
 interface Props {
-  name: string
+  key: string
   label: string
-  value: string
-  onChangeText(): void
+  value?: string
+  onChange(text: string): void
 }
 
-const Input: React.FC<Props> = ({
-  name,
-  label,
-  value,
-  onChangeText,
-}: Props) => {
+const Input: React.FC<Props> = (props: Props) => {
+  const { key, label, value, onChange } = props
+
   return (
     <>
       <Label>{label}</Label>
       <StyledInput
-        value={value}
-        onChangeText={onChangeText}
+        key={key}
+        value={value || ''}
+        onChangeText={onChange}
         placeholder={label}
-        secureTextEntry={name === 'Password'}
+        secureTextEntry={key === 'password'}
         placeholderTextColor="silver"
       />
     </>
