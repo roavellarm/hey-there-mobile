@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import Header from '../components/Header'
 import ChatList from '../pages/ChatList'
 import Profile from '../pages/Profile'
+import Join from '../pages/Join'
 
 const { Navigator, Screen } = createStackNavigator()
 
@@ -21,6 +22,7 @@ const Router: React.FC = () => {
       >
         <Screen name="Chats" component={ChatList} />
         <Screen name="Profile" component={Profile} />
+        <Screen name="Join" component={Join} />
       </Navigator>
     </NavigationContainer>
   )
