@@ -2,24 +2,23 @@ import React from 'react'
 import { Label, StyledInput } from './styles'
 
 interface Props {
-  key: string
   label: string
-  value?: string
+  value: string
   onChange(text: string): void
+  isPassword?: boolean
 }
 
 const Input: React.FC<Props> = (props: Props) => {
-  const { key, label, value, onChange } = props
+  const { label, value, onChange, isPassword = false } = props
 
   return (
     <>
       <Label>{label}</Label>
       <StyledInput
-        key={key}
-        value={value || ''}
+        value={value}
         onChangeText={onChange}
         placeholder={label}
-        secureTextEntry={key === 'password'}
+        secureTextEntry={isPassword}
         placeholderTextColor="silver"
       />
     </>

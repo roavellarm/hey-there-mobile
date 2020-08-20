@@ -17,12 +17,13 @@ const Router: React.FC = () => {
           headerStyle: {
             backgroundColor: '#574b5d',
             height: 80,
+            borderBottomWidth: 0,
           },
         }}
       >
+        <Screen name="Join" component={Join} />
         <Screen name="Chats" component={ChatList} />
         <Screen name="Profile" component={Profile} />
-        <Screen name="Join" component={Join} />
       </Navigator>
     </NavigationContainer>
   )

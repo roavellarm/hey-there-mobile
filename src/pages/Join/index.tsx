@@ -1,61 +1,46 @@
-import React, { useEffect } from 'react'
-import { Alert } from 'react-native'
-import { useForm } from 'react-hook-form'
+import React, { useState } from 'react'
 import Container from '../../components/Container'
 import Input from '../../components/Input'
 import Button from '../../components/Button'
-import { Box, Title } from './styles'
-
-type FormInputs = {
-  name: string
-  email: string
-  password: string
-}
+import { registerApi } from '../../api/auth'
+import { Box, Text } from './styles'
 
 const Join: React.FC = () => {
-  const { register, setValue, handleSubmit } = useForm<FormInputs>()
+  const [name, setName] = useState('Rodrigo')
+  const [email, setEmail] = useState('rodrigo@gmail.com')
+  const [password, setPassword] = useState('Rodrigo@123')
 
-  function onSubmit(data: FormInputs) {
-    Alert.alert('Dados: ', JSON.stringify(data))
+  async function handleJoin() {
+    try {
+      const { data } = await registerApi({ name, email, password })
+
+      return console.log(data)
+    } catch (error) {
+      return console.log({ error })
+    }
   }
-
-  useEffect(() => {
-    register({ name: 'name' }, { required: true })
-    register({ name: 'email' }, { required: true })
-    register({ name: 'password' }, { required: true })
-  }, [register])
 
   return (
     <Container>
       <Box>
-        <Title>Join Hey There</Title>
+        <Text>Join Hey There</Text>
 
-        <Input key="email" label="Email" onChange={text => setValue(text)} />
+        <Input label="Name" value={name} onChange={e => setName(e)} />
 
-        {/* <Label>Name</Label>
+        <Input label="Email" value={email} onChange={e => setEmail(e)} />
+
         <Input
-          onChangeText={text => setValue(text)}
-          placeholder="Name"
-          placeholderTextColor="silver"
+          label="Password"
+          value={password}
+          onChange={e => setPassword(e)}
+          isPassword
         />
 
-        <Label>Email</Label>
-        <Input
-          onChangeText={text => setValue(text)}
-          placeholder="Email"
-          autoCompleteType="email"
-          placeholderTextColor="silver"
+        <Button
+          style={{ marginTop: '20px' }}
+          title="Join"
+          onPress={handleJoin}
         />
-
-        <Label>Password</Label>
-        <Input
-          secureTextEntry
-          onChangeText={text => setValue(text)}
-          placeholder="Password"
-          placeholderTextColor="silver"
-        /> */}
-
-        <Button title="Join" onPress={handleSubmit(onSubmit)} />
       </Box>
     </Container>
   )
