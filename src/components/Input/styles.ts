@@ -1,6 +1,6 @@
 import styled from 'styled-components/native'
 
-export const Label = styled.Text`
+export const StyledLabel = styled.Text`
   font-family: 'Lato_700Bold';
   font-size: 18px;
   padding-left: 5px;

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Label, StyledInput } from './styles'
+import { StyledLabel, StyledInput } from './styles'
 
 interface Props {
   label: string
@@ -13,7 +13,7 @@ const Input: React.FC<Props> = (props: Props) => {
 
   return (
     <>
-      <Label>{label}</Label>
+      <StyledLabel>{label}</StyledLabel>
       <StyledInput
         value={value}
         onChangeText={onChange}
