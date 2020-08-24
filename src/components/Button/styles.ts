@@ -7,6 +7,7 @@ export const StyledButton = styled(RectButton)`
   width: 100%;
   border-radius: 8px;
   align-items: center;
+  margin-top: 20px;
 `
 
 export const Text = styled.Text`

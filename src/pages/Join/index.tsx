@@ -46,11 +46,7 @@ const Join: React.FC = () => {
           isPassword
         />
 
-        <Button
-          style={{ marginTop: '20px' }}
-          title="Join"
-          onPress={handleJoin}
-        />
+        <Button title="Join" onPress={handleJoin} />
       </FormContainer>
     </Container>
   )
