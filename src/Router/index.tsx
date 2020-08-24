@@ -6,6 +6,7 @@ import ChatList from '../pages/ChatList'
 import Profile from '../pages/Profile'
 import Join from '../pages/Join'
 import Login from '../pages/Login'
+import ChatRoom from '../pages/ChatRoom'
 
 const { Navigator, Screen } = createStackNavigator()
 
@@ -22,6 +23,7 @@ const Router: React.FC = () => {
           },
         }}
       >
+        <Screen name="Chat Room" component={ChatRoom} />
         <Screen name="Login" component={Login} />
         <Screen name="Join" component={Join} />
         <Screen name="Chats" component={ChatList} />
