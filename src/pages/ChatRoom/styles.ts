@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import styled from 'styled-components/native'
 import { transparentize } from 'polished'
 
@@ -7,4 +8,4 @@ const MessagesContainer = styled.View`
   width: 100%;
 `
 
-export default MessagesContainer
+export default memo(MessagesContainer)

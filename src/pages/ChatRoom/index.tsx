@@ -1,33 +1,42 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, memo, ReactNode } from 'react'
 import io from 'socket.io-client'
 import { TextInput } from 'react-native-gesture-handler'
 import Container from '../../components/Container'
 import Text from '../../components/Text'
 import MessagesContainer from './styles'
 
+const Message = memo(({ children, ...rest }: { children: ReactNode }) => {
+  return <Text {...rest}>{children}</Text>
+})
+
 const ChatRoom: React.FC = () => {
+  // Colocar chat message em cammel case!!!!!!!!!!!!!
+  const SOCKET_MESSAGE = 'chatMessage'
   const [chatMessage, setChatMessage] = useState<string>('')
-  const [chatMessages, setChatMessages] = useState<string[]>(['OIOIOIO'])
+  const [chatMessages, setChatMessages] = useState<string[]>([''])
 
   const socket = io('http://192.168.1.12:3002')
 
   function submitChatMessage() {
-    socket.emit('chat message', chatMessage)
+    socket.emit(SOCKET_MESSAGE, chatMessage)
     setChatMessage('')
   }
 
   useEffect(() => {
-    socket.on('chat message', (msg: string) =>
-      setChatMessages([...chatMessages, msg])
+    socket.on(SOCKET_MESSAGE, (msg: string) =>
+      setChatMessages(previousMessagesState => [...previousMessagesState, msg])
     )
-  }, [chatMessages, setChatMessage])
+    return () => {
+      socket.off(SOCKET_MESSAGE)
+    }
+  }, [])
 
   return (
     <Container>
       <MessagesContainer>
         {chatMessages.map((msg, index) => {
           // eslint-disable-next-line react/no-array-index-key
-          return <Text key={index}>{msg}</Text>
+          return <Message key={index}>{msg}</Message>
         })}
       </MessagesContainer>
 
@@ -41,12 +50,10 @@ const ChatRoom: React.FC = () => {
         autoCorrect={false}
         value={chatMessage}
         onSubmitEditing={() => submitChatMessage()}
-        onChangeText={(teste: string) => {
-          setChatMessage(teste)
-        }}
+        onChangeText={(e: string) => setChatMessage(e)}
       />
     </Container>
   )
 }
 
-export default ChatRoom
+export default memo(ChatRoom)
