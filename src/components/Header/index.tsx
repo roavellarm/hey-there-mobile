@@ -1,29 +1,29 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Icon from 'react-native-vector-icons/FontAwesome'
-import { Link } from '@react-navigation/native'
+import { Link, useNavigation } from '@react-navigation/native'
+import AuthContext from '../../contexts/auth'
 import { HeaderContainer, Text } from './styles'
 
 Icon.loadFont()
 
 const Header: React.FC = () => {
+  const { logout } = useContext(AuthContext)
+  const { navigate } = useNavigation()
+
+  const handleLogout = () => {
+    logout()
+    navigate('Login')
+  }
+
   return (
     <HeaderContainer>
       <Link to="/Chats">
         <Text>Chats</Text>
       </Link>
-      <Link to="/Chat Room">
-        <Text>Chat Room</Text>
-      </Link>
       <Link to="/Profile">
         <Text>Profile</Text>
       </Link>
-      <Link to="/Join">
-        <Text>Join</Text>
-      </Link>
-      <Link to="/Login">
-        <Text>Login</Text>
-      </Link>
-      <Icon name="power-off" color="#fff" size={20} />
+      <Icon name="power-off" color="#fff" size={20} onPress={handleLogout} />
     </HeaderContainer>
   )
 }
