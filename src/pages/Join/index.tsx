@@ -1,54 +1,44 @@
-import React, { useState } from 'react'
-import { AsyncStorage } from 'react-native'
-import Container from '../../components/Container'
-import Input from '../../components/Input'
-import Button from '../../components/Button'
-import Title from '../../components/Title'
-import FormContainer from '../../components/FormContainer'
-import { registerApi } from '../../api/auth'
+import React, { useState, useContext } from 'react'
+import { useNavigation } from '@react-navigation/native'
+import * as C from '../../components'
+import AuthContext from '../../contexts/auth'
 
 const Join: React.FC = () => {
+  const { join } = useContext(AuthContext)
+  const { navigate } = useNavigation()
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
   async function handleJoin() {
     try {
-      const { data } = await registerApi({ name, email, password })
+      await join({ name, email, password })
 
-      await AsyncStorage.setItem('token', data.token)
-      await AsyncStorage.setItem(
-        'currentUser',
-        JSON.stringify(data.currentUser)
-      )
-
-      console.log({ token: await AsyncStorage.getItem('token') })
-      console.log({ currentUser: await AsyncStorage.getItem('currentUser') })
-      return null
+      return navigate('Chats')
     } catch (error) {
-      return console.log({ error })
+      // eslint-disable-next-line no-console
+      return console.log(error)
     }
   }
 
   return (
-    <Container>
-      <FormContainer>
-        <Title>Join Hey There</Title>
+    <C.Container>
+      <C.FormContainer>
+        <C.Title>Join Hey There</C.Title>
 
-        <Input label="Name" value={name} onChange={e => setName(e)} />
-
-        <Input label="Email" value={email} onChange={e => setEmail(e)} />
-
-        <Input
+        <C.Input label="Name" value={name} onChange={e => setName(e)} />
+        <C.Input label="Email" value={email} onChange={e => setEmail(e)} />
+        <C.Input
           label="Password"
           value={password}
           onChange={e => setPassword(e)}
           isPassword
         />
 
-        <Button title="Join" onPress={handleJoin} />
-      </FormContainer>
-    </Container>
+        <C.Button title="Join" onPress={handleJoin} />
+        <C.Button title="Go to login" onPress={() => navigate('Login')} />
+      </C.FormContainer>
+    </C.Container>
   )
 }
 

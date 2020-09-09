@@ -1,47 +1,46 @@
-import React, { useState } from 'react'
-import { AsyncStorage } from 'react-native'
-import Container from '../../components/Container'
-import FormContainer from '../../components/FormContainer'
-import Title from '../../components/Title'
-import Input from '../../components/Input'
-import Button from '../../components/Button'
-import { loginApi } from '../../api/auth'
+import React, { useState, useContext } from 'react'
+import { useNavigation } from '@react-navigation/native'
+import AuthContext from '../../contexts/auth'
+import * as C from '../../components'
 
 const Login: React.FC = () => {
+  const { login } = useContext(AuthContext)
+  const { navigate } = useNavigation()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
   async function handleLogin() {
-    const { data } = await loginApi({ email, password })
+    try {
+      await login(email, password)
 
-    await AsyncStorage.setItem('token', data.token)
-    await AsyncStorage.setItem('currentUser', JSON.stringify(data.currentUser))
-
-    console.log({ token: await AsyncStorage.getItem('token') })
-    console.log({ currentUser: await AsyncStorage.getItem('currentUser') })
-    return null
+      return navigate('Chats')
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      return console.log(error)
+    }
   }
 
   return (
-    <Container>
-      <FormContainer>
-        <Title>Welcome back!</Title>
-        <Input
+    <C.Container>
+      <C.FormContainer>
+        <C.Title>Welcome back!</C.Title>
+        <C.Input
           label="Email"
           key="email"
           value={email}
           onChange={e => setEmail(e)}
         />
-        <Input
+        <C.Input
           label="Password"
           key="password"
           value={password}
           isPassword
           onChange={e => setPassword(e)}
         />
-        <Button title="Login" onPress={handleLogin} />
-      </FormContainer>
-    </Container>
+        <C.Button title="Login" onPress={handleLogin} />
+        <C.Button title="Go to join" onPress={() => navigate('Join')} />
+      </C.FormContainer>
+    </C.Container>
   )
 }
 
