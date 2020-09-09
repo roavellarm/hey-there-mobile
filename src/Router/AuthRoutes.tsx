@@ -1,19 +1,17 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-import Header from '../components/Header'
-import ChatList from '../pages/ChatList'
-import Profile from '../pages/Profile'
-import ChatRoom from '../pages/ChatRoom'
+import HeaderComponent from '../components/Header'
+import * as Page from '../pages'
 
 const { Navigator, Screen } = createStackNavigator()
 
-const Router: React.FC = () => {
+const Router = (): ReactElement => {
   return (
     <NavigationContainer>
       <Navigator
         screenOptions={{
-          headerTitle: () => <Header />,
+          headerTitle: () => <HeaderComponent />,
           headerStyle: {
             backgroundColor: '#574b5d',
             height: 80,
@@ -21,9 +19,9 @@ const Router: React.FC = () => {
           },
         }}
       >
-        <Screen name="Chat Room" component={ChatRoom} />
-        <Screen name="Chats" component={ChatList} />
-        <Screen name="Profile" component={Profile} />
+        <Screen name="Chat Room" component={Page.ChatRoom} />
+        <Screen name="Chats" component={Page.ChatList} />
+        <Screen name="Profile" component={Page.Profile} />
       </Navigator>
     </NavigationContainer>
   )

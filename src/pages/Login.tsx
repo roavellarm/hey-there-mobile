@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
 import { useNavigation } from '@react-navigation/native'
-import AuthContext from '../../contexts/auth'
-import * as C from '../../components'
+import AuthContext from '../contexts/auth'
+import * as C from '../components'
 
 const Login: React.FC = () => {
   const { login } = useContext(AuthContext)

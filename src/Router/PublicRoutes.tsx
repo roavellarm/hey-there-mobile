@@ -1,17 +1,16 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-import Join from '../pages/Join'
-import Login from '../pages/Login'
+import * as Page from '../pages'
 
 const { Navigator, Screen } = createStackNavigator()
 
-const Router: React.FC = () => {
+const Router = (): ReactElement => {
   return (
     <NavigationContainer>
       <Navigator headerMode="none">
-        <Screen name="Join" component={Join} />
-        <Screen name="Login" component={Login} />
+        <Screen name="Join" component={Page.Join} />
+        <Screen name="Login" component={Page.Login} />
       </Navigator>
     </NavigationContainer>
   )

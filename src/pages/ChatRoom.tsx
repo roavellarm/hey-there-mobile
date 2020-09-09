@@ -1,12 +1,20 @@
 import React, { useState, useEffect, memo, ReactNode } from 'react'
-import io from 'socket.io-client'
 import { TextInput } from 'react-native-gesture-handler'
-import Container from '../../components/Container'
-import Text from '../../components/Text'
-import MessagesContainer from './styles'
+import styled from 'styled-components/native'
+import { transparentize } from 'polished'
+import io from 'socket.io-client'
+import * as C from '../components'
+
+const MessagesContainer = styled.View`
+  background-color: ${transparentize(0.8, '#fff')};
+  flex: 1;
+  width: 100%;
+`
+
+memo(MessagesContainer)
 
 const Message = memo(({ children, ...rest }: { children: ReactNode }) => {
-  return <Text {...rest}>{children}</Text>
+  return <C.Text {...rest}>{children}</C.Text>
 })
 
 const ChatRoom: React.FC = () => {
@@ -32,7 +40,7 @@ const ChatRoom: React.FC = () => {
   }, [])
 
   return (
-    <Container>
+    <C.Container>
       <MessagesContainer>
         {chatMessages.map((msg, index) => {
           // eslint-disable-next-line react/no-array-index-key
@@ -52,7 +60,7 @@ const ChatRoom: React.FC = () => {
         onSubmitEditing={() => submitChatMessage()}
         onChangeText={(e: string) => setChatMessage(e)}
       />
-    </Container>
+    </C.Container>
   )
 }
 
