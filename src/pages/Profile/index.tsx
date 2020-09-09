@@ -1,7 +1,6 @@
 import React from 'react'
 import profile from '../../mocks/profile'
-import Container from '../../components/Container'
-import Avatar from '../../components/Avatar'
+import { Container, Avatar } from '../../components'
 import { Box, Text } from './styles'
 
 const Profile: React.FC = () => {
