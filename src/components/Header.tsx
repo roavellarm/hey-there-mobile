@@ -40,6 +40,9 @@ const Header = (): ReactElement => {
       <Link to="/Profile">
         <Text>Profile</Text>
       </Link>
+      <Link to="/Chat Room">
+        <Text>Chat Room</Text>
+      </Link>
       <Icon name="power-off" color="#fff" size={20} onPress={handleLogout} />
     </HeaderContainer>
   )
