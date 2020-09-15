@@ -6,8 +6,8 @@ import * as C from '../components'
 const Login: React.FC = () => {
   const { login } = useContext(AuthContext)
   const { navigate } = useNavigation()
-  const [email, setEmail] = useState('xena@gmail.com')
-  const [password, setPassword] = useState('Xena@123')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
   async function handleLogin() {
     try {
