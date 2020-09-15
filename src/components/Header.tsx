@@ -29,7 +29,7 @@ const Header = (): ReactElement => {
 
   const handleLogout = () => {
     logout()
-    navigate('Login')
+    navigate('AuthRouter', { screen: 'Chats' })
   }
 
   return (
