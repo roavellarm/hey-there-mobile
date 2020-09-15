@@ -6,14 +6,16 @@ import * as C from '../components'
 const Login: React.FC = () => {
   const { login } = useContext(AuthContext)
   const { navigate } = useNavigation()
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [email, setEmail] = useState('xena@gmail.com')
+  const [password, setPassword] = useState('Xena@123')
 
   async function handleLogin() {
     try {
       await login(email, password)
 
-      return navigate('Chats')
+      navigate('AuthRouter', { screen: 'Chats' })
+
+      return true
     } catch (error) {
       // eslint-disable-next-line no-console
       return console.log(error)

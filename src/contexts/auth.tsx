@@ -37,7 +37,7 @@ export const AuthProvider: React.FC = ({ children }) => {
 
     await AsyncStorage.setItem('token', data.token)
     await AsyncStorage.setItem('currentUser', JSON.stringify(data.currentUser))
-    setCurrentUser(data.currentUser)
+    return setCurrentUser(data.currentUser)
   }
 
   function logout() {

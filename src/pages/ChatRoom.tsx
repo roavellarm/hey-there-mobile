@@ -23,7 +23,8 @@ const ChatRoom: React.FC = () => {
   const [chatMessage, setChatMessage] = useState<string>('')
   const [chatMessages, setChatMessages] = useState<string[]>([''])
 
-  const socket = io('http://192.168.1.12:3002')
+  // const socket = io('http://192.168.1.12:3002')
+  const socket = io('http://192.168.0.15:3002')
 
   function submitChatMessage() {
     socket.emit(SOCKET_MESSAGE, chatMessage)

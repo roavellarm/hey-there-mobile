@@ -14,7 +14,7 @@ const Join: React.FC = () => {
     try {
       await join({ name, email, password })
 
-      return navigate('Chats')
+      return navigate('AuthRouter', { screen: 'Chat Room' })
     } catch (error) {
       // eslint-disable-next-line no-console
       return console.log(error)

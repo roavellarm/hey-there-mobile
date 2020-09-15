@@ -1,12 +1,23 @@
-import React, { useContext, ReactElement } from 'react'
-import AuthRoutes from './AuthRoutes'
+import React, { ReactElement } from 'react'
+import { NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
+// import HeaderComponent from '../components/Header'
 import PublicRoutes from './PublicRoutes'
-import AuthContext from '../contexts/auth'
+import AuthRouter from './AuthRoutes'
+// import Chats from '../pages/ChatList'
+// import AuthContext from '../contexts/auth'
+
+const { Navigator, Screen } = createStackNavigator()
 
 const Router = (): ReactElement => {
-  const { signed } = useContext(AuthContext)
-
-  return signed ? <AuthRoutes /> : <PublicRoutes />
+  return (
+    <NavigationContainer>
+      <Navigator>
+        <Screen name="PublicRouter" component={PublicRoutes} />
+        <Screen name="AuthRouter" component={AuthRouter} />
+      </Navigator>
+    </NavigationContainer>
+  )
 }
 
 export default Router

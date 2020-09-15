@@ -1,19 +1,30 @@
 import React, { ReactElement } from 'react'
-import { NavigationContainer } from '@react-navigation/native'
+// import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-import * as Page from '../pages'
+import HeaderComponent from '../components/Header'
+
+// import * as Page from '../pages'
+import Join from '../pages/Join'
+import Login from '../pages/Login'
 
 const { Navigator, Screen } = createStackNavigator()
 
-const Router = (): ReactElement => {
+const PublicRouter = (): ReactElement => {
   return (
-    <NavigationContainer>
-      <Navigator headerMode="none">
-        <Screen name="Join" component={Page.Join} />
-        <Screen name="Login" component={Page.Login} />
-      </Navigator>
-    </NavigationContainer>
+    <Navigator
+      screenOptions={{
+        headerTitle: () => <HeaderComponent />,
+        headerStyle: {
+          backgroundColor: '#574b5d',
+          height: 80,
+          borderBottomWidth: 0,
+        },
+      }}
+    >
+      <Screen name="Join" component={Join} />
+      <Screen name="Login" component={Login} />
+    </Navigator>
   )
 }
 
-export default Router
+export default PublicRouter
