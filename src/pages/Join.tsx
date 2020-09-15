@@ -17,7 +17,7 @@ const Join: React.FC = () => {
       return navigate('AuthRouter', { screen: 'Chat Room' })
     } catch (error) {
       // eslint-disable-next-line no-console
-      return console.log('este é um erro', error)
+      return console.log(error)
     }
   }
 
