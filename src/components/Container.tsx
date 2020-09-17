@@ -7,6 +7,7 @@ const StyledContainer = styled.View`
   background-color: #241b28;
   padding: 6px;
   align-items: center;
+  padding-top: 28px;
 `
 interface Props {
   children: React.ReactNode

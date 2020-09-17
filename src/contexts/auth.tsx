@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-types */
-import React, { createContext, useState } from 'react'
+import React, { createContext, useState, ReactChildren } from 'react'
 import { AsyncStorage } from 'react-native'
+import { AxiosError } from 'axios'
 import { loginApi, registerApi } from '../api/auth'
 
 interface AuthContextData {
@@ -19,25 +20,41 @@ interface fieldsProps {
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData)
 
-// eslint-disable-next-line react/prop-types
-export const AuthProvider: React.FC = ({ children }) => {
+export const AuthProvider = ({ children }: { children: ReactChildren }) => {
   const [currentUser, setCurrentUser] = useState<object | null>(null)
 
   async function login(email: string, password: string) {
-    const { data } = await loginApi({ email, password })
+    try {
+      const { data, error } = await loginApi({ email, password })
 
-    await AsyncStorage.setItem('token', data.token)
-    await AsyncStorage.setItem('currentUser', JSON.stringify(data.currentUser))
+      if (error) return { error }
 
-    setCurrentUser(data.currentUser)
+      await AsyncStorage.setItem('token', data.token)
+      await AsyncStorage.setItem(
+        'currentUser',
+        JSON.stringify(data.currentUser)
+      )
+
+      setCurrentUser(data.currentUser)
+      return null
+    } catch (error) {
+      return { error }
+    }
   }
 
   async function join(fields: fieldsProps) {
-    const { data } = await registerApi(fields)
+    try {
+      const { data } = await registerApi(fields)
 
-    await AsyncStorage.setItem('token', data.token)
-    await AsyncStorage.setItem('currentUser', JSON.stringify(data.currentUser))
-    return setCurrentUser(data.currentUser)
+      await AsyncStorage.setItem('token', data.token)
+      await AsyncStorage.setItem(
+        'currentUser',
+        JSON.stringify(data.currentUser)
+      )
+      return setCurrentUser(data.currentUser)
+    } catch (error) {
+      return { error }
+    }
   }
 
   function logout() {

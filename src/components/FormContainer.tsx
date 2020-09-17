@@ -10,6 +10,7 @@ export const StyledFormContainer = styled.View`
   width: 100%;
   max-width: 500px;
   padding: 0px 16px 16px;
+  margin-top: 20px;
 `
 
 interface Props {
