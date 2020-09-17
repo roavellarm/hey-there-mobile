@@ -1,22 +1,16 @@
 import React, { ReactElement } from 'react'
-import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-// import HeaderComponent from '../components/Header'
-import PublicRoutes from './PublicRoutes'
-import AuthRouter from './AuthRoutes'
-// import Chats from '../pages/ChatList'
-// import AuthContext from '../contexts/auth'
+import PublicRouter from './PublicRouter'
+import AuthRouter from './AuthRouter'
 
 const { Navigator, Screen } = createStackNavigator()
 
 const Router = (): ReactElement => {
   return (
-    <NavigationContainer>
-      <Navigator>
-        <Screen name="PublicRouter" component={PublicRoutes} />
-        <Screen name="AuthRouter" component={AuthRouter} />
-      </Navigator>
-    </NavigationContainer>
+    <Navigator headerMode="none">
+      <Screen name="PublicRouter" component={PublicRouter} />
+      <Screen name="AuthRouter" component={AuthRouter} />
+    </Navigator>
   )
 }
 

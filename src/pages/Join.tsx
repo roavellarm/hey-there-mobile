@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, Link } from '@react-navigation/native'
 import AuthContext from '../contexts/auth'
 import * as C from '../components'
 
@@ -36,7 +36,8 @@ const Join: React.FC = () => {
         />
 
         <C.Button title="Join" onPress={handleJoin} />
-        <C.Button title="Go to login" onPress={() => navigate('Login')} />
+
+        <Link to="Login">Already have an account?</Link>
       </C.FormContainer>
     </C.Container>
   )

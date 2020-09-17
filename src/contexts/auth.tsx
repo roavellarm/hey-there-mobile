@@ -19,7 +19,6 @@ interface fieldsProps {
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData)
 
-// eslint-disable-next-line react/prop-types
 export const AuthProvider: React.FC = ({ children }) => {
   const [currentUser, setCurrentUser] = useState<object | null>(null)
 

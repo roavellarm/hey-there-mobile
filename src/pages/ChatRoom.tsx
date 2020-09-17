@@ -18,12 +18,10 @@ const Message = memo(({ children, ...rest }: { children: ReactNode }) => {
 })
 
 const ChatRoom: React.FC = () => {
-  // Colocar chat message em cammel case!!!!!!!!!!!!!
   const SOCKET_MESSAGE = 'chatMessage'
   const [chatMessage, setChatMessage] = useState<string>('')
   const [chatMessages, setChatMessages] = useState<string[]>([''])
 
-  // const socket = io('http://192.168.1.12:3002')
   const socket = io('http://192.168.0.15:3002')
 
   function submitChatMessage() {
@@ -44,7 +42,6 @@ const ChatRoom: React.FC = () => {
     <C.Container>
       <MessagesContainer>
         {chatMessages.map((msg, index) => {
-          // eslint-disable-next-line react/no-array-index-key
           return <Message key={index}>{msg}</Message>
         })}
       </MessagesContainer>

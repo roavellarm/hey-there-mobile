@@ -11,14 +11,12 @@ const Container = styled.View`
   align-items: center;
 `
 
-const ChatList: React.FC = () => {
-  return (
-    <Container>
-      {chatList.map((info: CardInfo) => {
-        return <Card key={info.chatId} cardInfo={info} />
-      })}
-    </Container>
-  )
-}
+const ChatList: React.FC = () => (
+  <Container>
+    {chatList.map((info: CardInfo) => {
+      return <Card key={info.chatId} cardInfo={info} />
+    })}
+  </Container>
+)
 
 export default ChatList
