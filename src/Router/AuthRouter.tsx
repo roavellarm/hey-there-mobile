@@ -1,11 +1,7 @@
 import React, { ReactElement } from 'react'
-// import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import HeaderComponent from '../components/Header'
-//  import * as Page from '../pages'
-import Chats from '../pages/ChatList'
-import Profile from '../pages/Profile'
-import ChatRoom from '../pages/ChatRoom'
+import * as Page from '../pages'
 
 const { Navigator, Screen } = createStackNavigator()
 
@@ -21,9 +17,9 @@ const Router = (): ReactElement => {
         },
       }}
     >
-      <Screen name="Chats" component={Chats} />
-      <Screen name="Profile" component={Profile} />
-      <Screen name="Chat Room" component={ChatRoom} />
+      <Screen name="Chats" component={Page.ChatList} />
+      <Screen name="Profile" component={Page.Profile} />
+      <Screen name="Chat Room" component={Page.ChatRoom} />
     </Navigator>
   )
 }

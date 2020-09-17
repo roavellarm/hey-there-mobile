@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-types */
-import React, { createContext, useState } from 'react'
+import React, { createContext, useState, ReactChildren } from 'react'
 import { AsyncStorage } from 'react-native'
+import { AxiosError } from 'axios'
 import { loginApi, registerApi } from '../api/auth'
 
 interface AuthContextData {
@@ -19,7 +20,7 @@ interface fieldsProps {
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData)
 
-export const AuthProvider = ({ children }) => {
+export const AuthProvider = ({ children }: { children: ReactChildren }) => {
   const [currentUser, setCurrentUser] = useState<object | null>(null)
 
   async function login(email: string, password: string) {
