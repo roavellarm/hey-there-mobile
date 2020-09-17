@@ -2,12 +2,14 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 export const StyledLabel = styled.Text`
-  font-family: 'Lato_700Bold';
-  font-size: 18px;
+  font-family: 'Lato_300Light';
+  font-size: 15px;
   padding-left: 5px;
+  height: 20px;
   width: 100%;
   letter-spacing: 0.4px;
   color: #fff;
+  margin-top: 10px;
 `
 
 export const StyledInput = styled.TextInput`
@@ -33,7 +35,7 @@ const Input: React.FC<Props> = (props: Props) => {
 
   return (
     <>
-      <StyledLabel>{label}</StyledLabel>
+      <StyledLabel>{value && label}</StyledLabel>
       <StyledInput
         value={value}
         onChangeText={onChange}
