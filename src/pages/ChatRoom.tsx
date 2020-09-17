@@ -17,14 +17,12 @@ const Message = memo(({ children, ...rest }: { children: ReactNode }) => {
   return <C.Text {...rest}>{children}</C.Text>
 })
 
-const ChatRoom: React.FC = () => {
-  // Colocar chat message em cammel case!!!!!!!!!!!!!
+const ChatRoom = () => {
   const SOCKET_MESSAGE = 'chatMessage'
   const [chatMessage, setChatMessage] = useState<string>('')
   const [chatMessages, setChatMessages] = useState<string[]>([''])
 
-  // const socket = io('http://192.168.1.12:3002')
-  const socket = io('http://192.168.0.15:3002')
+  const socket = io('http://192.168.1.12:3002')
 
   function submitChatMessage() {
     socket.emit(SOCKET_MESSAGE, chatMessage)
