@@ -11,14 +11,9 @@ const Join: React.FC = () => {
   const [password, setPassword] = useState('')
 
   async function handleJoin() {
-    try {
-      await join({ name, email, password })
+    await join({ name, email, password })
 
-      return navigate('AuthRouter', { screen: 'Chat Room' })
-    } catch (error) {
-      // eslint-disable-next-line no-console
-      return console.log(error)
-    }
+    return navigate('AuthRouter', { screen: 'Chat Room' })
   }
 
   return (
@@ -36,7 +31,7 @@ const Join: React.FC = () => {
         />
 
         <C.Button title="Join" onPress={handleJoin} />
-        <C.Button title="Go to login" onPress={() => navigate('Login')} />
+        <C.Link to="/Login" title="Already have an account? Sign In" />
       </C.FormContainer>
     </C.Container>
   )
