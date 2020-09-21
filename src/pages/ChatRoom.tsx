@@ -1,9 +1,18 @@
-import React, { useState, useEffect, memo, ReactNode } from 'react'
+import React, { useState, useEffect, memo, ReactNode, useContext } from 'react'
 import { TextInput } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 import { transparentize } from 'polished'
 import io from 'socket.io-client'
-import * as C from '../components'
+import Text from '../components/Text'
+import { getChatMessages } from '../mocks/ChatRoom'
+import AuthContext from '../contexts/auth'
+
+const Container = styled.View`
+  background-color: #241b28;
+  flex: 1;
+  padding: 4px;
+  width: 100%;
+`
 
 const MessagesContainer = styled.View`
   background-color: ${transparentize(0.8, '#fff')};
@@ -14,15 +23,24 @@ const MessagesContainer = styled.View`
 memo(MessagesContainer)
 
 const Message = memo(({ children, ...rest }: { children: ReactNode }) => {
-  return <C.Text {...rest}>{children}</C.Text>
+  return <Text {...rest}>{children}</Text>
 })
 
-const ChatRoom = () => {
+interface ChatProps {
+  author: string
+  content: string
+}
+
+const ChatRoom = ({ route }) => {
+  const { chatId } = route.params
+  const { currentUser } = useContext(AuthContext)
+
   const SOCKET_MESSAGE = 'chatMessage'
   const [chatMessage, setChatMessage] = useState<string>('')
-  const [chatMessages, setChatMessages] = useState<string[]>([''])
+  const [chatMessages, setChatMessages] = useState<ChatProps[]>([])
 
-  const socket = io('https://heythere-staging-api.herokuapp.com:3002')
+  const socket = io('http://192.168.1.12:3002')
+  // const socket = io('https://hey-there-socket-api.herokuapp.com:42450')
 
   function submitChatMessage() {
     socket.emit(SOCKET_MESSAGE, chatMessage)
@@ -30,20 +48,32 @@ const ChatRoom = () => {
   }
 
   useEffect(() => {
-    socket.on(SOCKET_MESSAGE, (msg: string) =>
-      setChatMessages(previousMessagesState => [...previousMessagesState, msg])
-    )
-    return () => {
-      socket.off(SOCKET_MESSAGE)
-    }
+    setChatMessages(getChatMessages)
   }, [])
 
+  // useEffect(() => {
+  //   socket.on(SOCKET_MESSAGE, (msg: string) =>
+  //     setChatMessages(previousMessagesState => [...previousMessagesState, msg])
+  //   )
+  //   return () => {
+  //     socket.off(SOCKET_MESSAGE)
+  //   }
+  // }, [])
+
   return (
-    <C.Container>
+    <Container>
       <MessagesContainer>
         {chatMessages.map((msg, index) => {
           // eslint-disable-next-line react/no-array-index-key
-          return <Message key={index}>{msg}</Message>
+          return (
+            <>
+              {msg.author === currentUser.email ? (
+                <Message key={index}>{msg.content}</Message>
+              ) : (
+                <Message key={index}>{msg.content}</Message>
+              )}
+            </>
+          )
         })}
       </MessagesContainer>
 
@@ -59,7 +89,7 @@ const ChatRoom = () => {
         onSubmitEditing={() => submitChatMessage()}
         onChangeText={(e: string) => setChatMessage(e)}
       />
-    </C.Container>
+    </Container>
   )
 }
 

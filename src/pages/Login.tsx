@@ -6,13 +6,13 @@ import * as C from '../components'
 const Login = () => {
   const { login } = useContext(AuthContext)
   const { navigate } = useNavigation()
-  const [email, setEmail] = useState('heman@gmail.com')
-  const [password, setPassword] = useState('010101')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
   async function handleLogin() {
     const { error } = await login(email, password)
 
-    if (error) return console.log({ error })
+    if (error) return { error }
 
     return navigate('AuthRouter', { screen: 'Chats' })
   }

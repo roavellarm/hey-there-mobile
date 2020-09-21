@@ -14,13 +14,14 @@ export interface CardInfo {
 
 interface CardProps {
   cardInfo: CardInfo
+  onPress(): void
 }
 
-const Card: React.FC<CardProps> = ({ cardInfo }: { cardInfo: CardInfo }) => {
+const Card: React.FC<CardProps> = ({ cardInfo, onPress }: CardProps) => {
   const { avatar, name, msgPreview, time, newMessages } = cardInfo
 
   return (
-    <S.Container>
+    <S.Container onPress={onPress}>
       <Avatar source={avatar} size={50} />
       <S.TextsContainer>
         <S.Texts>

@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-types */
 import React, { createContext, useState, ReactChildren } from 'react'
 import { AsyncStorage } from 'react-native'
-import { AxiosError } from 'axios'
 import { loginApi, registerApi } from '../api/auth'
 
 interface AuthContextData {
