@@ -1,5 +1,5 @@
 import React, { useContext, ReactElement } from 'react'
-import Icon from 'react-native-vector-icons/FontAwesome'
+import Feather from 'react-native-vector-icons/Feather'
 import { Link, useNavigation } from '@react-navigation/native'
 import styled from 'styled-components/native'
 import AuthContext from '../contexts/auth'
@@ -21,8 +21,6 @@ const Text = styled.Text`
   color: #fff;
 `
 
-Icon.loadFont()
-
 const Header = (): ReactElement => {
   const { logout } = useContext(AuthContext)
   const { navigate } = useNavigation()
@@ -43,7 +41,7 @@ const Header = (): ReactElement => {
       <Link to="/Chat Room">
         <Text>Chat Room</Text>
       </Link>
-      <Icon name="power-off" color="#fff" size={20} onPress={handleLogout} />
+      <Feather name="power" color="#fff" size={20} onPress={handleLogout} />
     </HeaderContainer>
   )
 }
