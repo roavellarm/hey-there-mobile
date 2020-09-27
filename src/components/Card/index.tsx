@@ -1,17 +1,7 @@
 import React from 'react'
 import { ImageSourcePropType } from 'react-native'
 import Avatar from '../Avatar'
-import {
-  Container,
-  TextsContainer,
-  Texts,
-  Name,
-  TextMsg,
-  TimeContainer,
-  TimeText,
-  NewMsgsCircle,
-  NewMsgs,
-} from './styles'
+import * as S from './styles'
 
 export interface CardInfo {
   chatId: string
@@ -24,29 +14,30 @@ export interface CardInfo {
 
 interface CardProps {
   cardInfo: CardInfo
+  onPress(): void
 }
 
-const Card: React.FC<CardProps> = ({ cardInfo }: { cardInfo: CardInfo }) => {
+const Card = ({ cardInfo, onPress }: CardProps) => {
   const { avatar, name, msgPreview, time, newMessages } = cardInfo
 
   return (
-    <Container>
+    <S.Container onPress={onPress}>
       <Avatar source={avatar} size={50} />
-      <TextsContainer>
-        <Texts>
-          <Name>{name}</Name>
-          <TextMsg>{msgPreview}</TextMsg>
-        </Texts>
-        <TimeContainer>
-          <TimeText hasNewMessages={newMessages !== '0'}>{time}</TimeText>
+      <S.TextsContainer>
+        <S.Texts>
+          <S.Name>{name}</S.Name>
+          <S.TextMsg>{msgPreview}</S.TextMsg>
+        </S.Texts>
+        <S.TimeContainer>
+          <S.TimeText hasNewMessages={newMessages !== '0'}>{time}</S.TimeText>
           {newMessages !== '0' && (
-            <NewMsgsCircle>
-              <NewMsgs>{newMessages}</NewMsgs>
-            </NewMsgsCircle>
+            <S.NewMsgsCircle>
+              <S.NewMsgs>{newMessages}</S.NewMsgs>
+            </S.NewMsgsCircle>
           )}
-        </TimeContainer>
-      </TextsContainer>
-    </Container>
+        </S.TimeContainer>
+      </S.TextsContainer>
+    </S.Container>
   )
 }
 
