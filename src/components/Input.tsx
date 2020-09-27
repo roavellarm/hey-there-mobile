@@ -30,7 +30,7 @@ interface Props {
   isPassword?: boolean
 }
 
-const Input: React.FC<Props> = (props: Props) => {
+const Input = (props: Props) => {
   const { label, value, onChange, isPassword = false } = props
 
   return (
