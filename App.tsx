@@ -1,5 +1,5 @@
 import 'react-native-gesture-handler'
-import React from 'react'
+import React, { ReactElement } from 'react'
 import { StatusBar } from 'expo-status-bar'
 import { AppLoading } from 'expo'
 import {
@@ -14,7 +14,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import Router from './src/Router'
 import { AuthProvider } from './src/contexts/auth'
 
-const App: React.FC = () => {
+const App = (): ReactElement => {
   const [fontsLoaded] = useFonts({
     Lato_100Thin,
     Lato_300Light,

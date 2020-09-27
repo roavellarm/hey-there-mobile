@@ -1,12 +1,17 @@
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+import { AxiosResponse } from 'axios'
 import api from './index'
 
 interface LoginData {
   email: string
   password: string
 }
+interface Data {
+  token: string
+  currentUser: I.CurrentUser
+}
 
-export const loginApi = (data: LoginData) => api.post('/login', data)
+export const loginApi = (data: LoginData): Promise<AxiosResponse<Data>> =>
+  api.post('/login', data)
 
 interface RegisterData {
   name: string

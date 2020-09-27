@@ -12,7 +12,7 @@ const Container = styled.View`
   align-items: center;
 `
 
-const ChatList: React.FC = () => {
+const ChatList = () => {
   const { navigate } = useNavigation()
 
   const handleOnPress = (chatId: string) => {

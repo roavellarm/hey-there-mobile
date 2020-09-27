@@ -1,13 +1,18 @@
 /* eslint-disable @typescript-eslint/ban-types */
-import React, { createContext, useState, ReactChildren } from 'react'
+import React, {
+  createContext,
+  useState,
+  ReactChildren,
+  ReactElement,
+} from 'react'
 import { AsyncStorage } from 'react-native'
 import { loginApi, registerApi } from '../api/auth'
 
 interface AuthContextData {
   signed: boolean
   currentUser: object | null
-  login(email: string, password: string): Promise<void>
-  join(fields: fieldsProps): Promise<void>
+  login(email: string, password: string): Promise<void | { error: Error }>
+  join(fields: fieldsProps): Promise<void | { error: Error }>
   logout(): void
 }
 
@@ -19,14 +24,16 @@ interface fieldsProps {
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData)
 
-export const AuthProvider = ({ children }: { children: ReactChildren }) => {
-  const [currentUser, setCurrentUser] = useState<object | null>(null)
+export const AuthProvider = ({
+  children,
+}: {
+  children: ReactElement
+}): ReactElement => {
+  const [currentUser, setCurrentUser] = useState<I.CurrentUser | null>(null)
 
   async function login(email: string, password: string) {
     try {
       const { data, error } = await loginApi({ email, password })
-
-      if (error) return { error }
 
       await AsyncStorage.setItem('token', data.token)
       await AsyncStorage.setItem(
@@ -34,8 +41,7 @@ export const AuthProvider = ({ children }: { children: ReactChildren }) => {
         JSON.stringify(data.currentUser)
       )
 
-      setCurrentUser(data.currentUser)
-      return null
+      return setCurrentUser(data.currentUser)
     } catch (error) {
       return { error }
     }
