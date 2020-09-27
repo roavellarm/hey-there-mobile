@@ -3,23 +3,18 @@ import { useNavigation } from '@react-navigation/native'
 import AuthContext from '../contexts/auth'
 import * as C from '../components'
 
-const Login: React.FC = () => {
+const Login = () => {
   const { login } = useContext(AuthContext)
   const { navigate } = useNavigation()
-  const [email, setEmail] = useState('xena@gmail.com')
-  const [password, setPassword] = useState('Xena@123')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
   async function handleLogin() {
-    try {
-      await login(email, password)
+    const { error } = await login(email, password)
 
-      navigate('AuthRouter', { screen: 'Chats' })
+    if (error) return { error }
 
-      return true
-    } catch (error) {
-      // eslint-disable-next-line no-console
-      return console.log(error)
-    }
+    return navigate('AuthRouter', { screen: 'Chats' })
   }
 
   return (
@@ -40,7 +35,7 @@ const Login: React.FC = () => {
           onChange={e => setPassword(e)}
         />
         <C.Button title="Login" onPress={handleLogin} />
-        <C.Button title="Go to join" onPress={() => navigate('Join')} />
+        <C.Link title="Not registered? Join here" to="/Join" />
       </C.FormContainer>
     </C.Container>
   )

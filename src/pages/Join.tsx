@@ -1,9 +1,9 @@
 import React, { useState, useContext } from 'react'
-import { useNavigation, Link } from '@react-navigation/native'
+import { useNavigation } from '@react-navigation/native'
 import AuthContext from '../contexts/auth'
 import * as C from '../components'
 
-const Join: React.FC = () => {
+const Join = () => {
   const { join } = useContext(AuthContext)
   const { navigate } = useNavigation()
   const [name, setName] = useState('')
@@ -11,14 +11,9 @@ const Join: React.FC = () => {
   const [password, setPassword] = useState('')
 
   async function handleJoin() {
-    try {
-      await join({ name, email, password })
+    await join({ name, email, password })
 
-      return navigate('AuthRouter', { screen: 'Chat Room' })
-    } catch (error) {
-      // eslint-disable-next-line no-console
-      return console.log(error)
-    }
+    return navigate('AuthRouter', { screen: 'Chat Room' })
   }
 
   return (
@@ -36,8 +31,7 @@ const Join: React.FC = () => {
         />
 
         <C.Button title="Join" onPress={handleJoin} />
-
-        <Link to="Login">Already have an account?</Link>
+        <C.Link to="/Login" title="Already have an account? Sign In" />
       </C.FormContainer>
     </C.Container>
   )

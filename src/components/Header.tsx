@@ -27,7 +27,7 @@ const Header = (): ReactElement => {
 
   const handleLogout = () => {
     logout()
-    navigate('Login')
+    navigate('AuthRouter', { screen: 'Chats' })
   }
 
   return (
@@ -35,9 +35,11 @@ const Header = (): ReactElement => {
       <Link to="/Chats">
         <Text>Chats</Text>
       </Link>
+
       <Link to="/Profile">
         <Text>Profile</Text>
       </Link>
+
       <Feather name="power" color="#fff" size={20} onPress={handleLogout} />
     </HeaderContainer>
   )

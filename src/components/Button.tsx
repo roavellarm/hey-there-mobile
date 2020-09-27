@@ -8,7 +8,7 @@ const StyledButton = styled(RectButton)`
   width: 100%;
   border-radius: 8px;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 30px;
 `
 
 const Text = styled.Text`
@@ -23,7 +23,7 @@ interface Props {
   onPress(): void
 }
 
-const Button: React.FC<Props> = ({ title, onPress, ...rest }: Props) => {
+const Button = ({ title, onPress, ...rest }: Props) => {
   return (
     <StyledButton onPress={onPress} {...rest}>
       <Text>{title}</Text>

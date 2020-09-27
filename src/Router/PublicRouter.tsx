@@ -1,10 +1,10 @@
-import React, { ReactElement } from 'react'
+import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 import * as Page from '../pages'
 
 const { Navigator, Screen } = createStackNavigator()
 
-const PublicRouter = (): ReactElement => {
+const PublicRouter = () => {
   return (
     <Navigator headerMode="none">
       <Screen name="Join" component={Page.Join} />

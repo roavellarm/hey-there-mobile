@@ -1,13 +1,12 @@
-/* eslint-disable @typescript-eslint/ban-types */
-import React, { createContext, useState } from 'react'
+import React, { createContext, useState, ReactElement } from 'react'
 import { AsyncStorage } from 'react-native'
 import { loginApi, registerApi } from '../api/auth'
 
 interface AuthContextData {
   signed: boolean
-  currentUser: object | null
-  login(email: string, password: string): Promise<void>
-  join(fields: fieldsProps): Promise<void>
+  currentUser: I.CurrentUser | null
+  login(email: string, password: string): Promise<void | { error: Error }>
+  join(fields: fieldsProps): Promise<void | { error: Error }>
   logout(): void
 }
 
@@ -19,24 +18,42 @@ interface fieldsProps {
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData)
 
-export const AuthProvider: React.FC = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState<object | null>(null)
+export const AuthProvider = ({
+  children,
+}: {
+  children: ReactElement
+}): ReactElement => {
+  const [currentUser, setCurrentUser] = useState<I.CurrentUser | null>(null)
 
   async function login(email: string, password: string) {
-    const { data } = await loginApi({ email, password })
+    try {
+      const { data, error } = await loginApi({ email, password })
 
-    await AsyncStorage.setItem('token', data.token)
-    await AsyncStorage.setItem('currentUser', JSON.stringify(data.currentUser))
+      await AsyncStorage.setItem('token', data.token)
+      await AsyncStorage.setItem(
+        'currentUser',
+        JSON.stringify(data.currentUser)
+      )
 
-    setCurrentUser(data.currentUser)
+      return setCurrentUser(data.currentUser)
+    } catch (error) {
+      return { error }
+    }
   }
 
   async function join(fields: fieldsProps) {
-    const { data } = await registerApi(fields)
+    try {
+      const { data } = await registerApi(fields)
 
-    await AsyncStorage.setItem('token', data.token)
-    await AsyncStorage.setItem('currentUser', JSON.stringify(data.currentUser))
-    return setCurrentUser(data.currentUser)
+      await AsyncStorage.setItem('token', data.token)
+      await AsyncStorage.setItem(
+        'currentUser',
+        JSON.stringify(data.currentUser)
+      )
+      return setCurrentUser(data.currentUser)
+    } catch (error) {
+      return { error }
+    }
   }
 
   function logout() {

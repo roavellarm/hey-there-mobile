@@ -7,12 +7,13 @@ const StyledContainer = styled.View`
   background-color: #241b28;
   padding: 6px;
   align-items: center;
-  padding-top: 28px;
+  padding-top: 35px;
 `
 interface Props {
   children: React.ReactNode
 }
-const Container: React.FC<Props> = ({ children }: Props) => {
+
+const Container = ({ children }: Props) => {
   return <StyledContainer>{children}</StyledContainer>
 }
 
