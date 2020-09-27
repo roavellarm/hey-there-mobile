@@ -12,7 +12,7 @@ const StyledContainer = styled.View`
 interface Props {
   children: React.ReactNode
 }
-const Container: React.FC<Props> = ({ children }: Props) => {
+const Container = ({ children }: Props) => {
   return <StyledContainer>{children}</StyledContainer>
 }
 

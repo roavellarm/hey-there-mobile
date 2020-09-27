@@ -13,7 +13,7 @@ interface Props {
   size: number
 }
 
-const Avatar: React.FC<Props> = ({ source, size }: Props) => {
+const Avatar = ({ source, size }: Props) => {
   return <StyledAvatar source={source} size={size} />
 }
 

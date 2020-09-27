@@ -17,7 +17,7 @@ interface Props {
   children: ReactNode
 }
 
-const FormContainer: React.FC<Props> = ({ children }: Props) => {
+const FormContainer = ({ children }: Props) => {
   return <StyledFormContainer>{children}</StyledFormContainer>
 }
 

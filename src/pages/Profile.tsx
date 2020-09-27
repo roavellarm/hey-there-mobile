@@ -20,7 +20,7 @@ export const Box = styled.View`
   border-radius: 8px;
 `
 
-const Profile: React.FC = () => {
+const Profile = () => {
   return (
     <Container>
       <Box>

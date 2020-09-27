@@ -23,7 +23,7 @@ interface Props {
   onPress(): void
 }
 
-const Button: React.FC<Props> = ({ title, onPress, ...rest }: Props) => {
+const Button = ({ title, onPress, ...rest }: Props) => {
   return (
     <StyledButton onPress={onPress} {...rest}>
       <Text>{title}</Text>
