@@ -1,7 +1,8 @@
 import styled from 'styled-components/native'
+import { TouchableOpacity } from 'react-native'
 import { lighten } from 'polished'
 
-export const Container = styled.View`
+export const Container = styled(TouchableOpacity)`
   padding: 8px;
   border-radius: 4px;
   background-color: ${lighten(0.1, '#241b28')};

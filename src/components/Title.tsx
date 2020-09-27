@@ -13,7 +13,7 @@ interface Props {
   children: ReactNode
 }
 
-const Title: React.FC<Props> = ({ children }: Props) => {
+const Title = ({ children }: Props) => {
   return <StyledTitle>{children}</StyledTitle>
 }
 
