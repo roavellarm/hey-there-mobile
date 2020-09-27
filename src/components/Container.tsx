@@ -12,6 +12,7 @@ const StyledContainer = styled.View`
 interface Props {
   children: React.ReactNode
 }
+
 const Container = ({ children }: Props) => {
   return <StyledContainer>{children}</StyledContainer>
 }

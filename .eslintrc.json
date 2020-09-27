@@ -22,8 +22,8 @@
     "react/jsx-filename-extension": ["off", { "extensions": [".js", ".jsx"] }],
     "@typescript-eslint/explicit-function-return-type": "off",
     "react/jsx-props-no-spreading": "off",
-    "@typescript-eslint/explicit-module-boundary-types": "off",
     "react/no-array-index-key": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
     "import/extensions": [
       "error",
       "ignorePackages",

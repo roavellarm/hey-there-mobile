@@ -1,16 +1,10 @@
-/* eslint-disable @typescript-eslint/ban-types */
-import React, {
-  createContext,
-  useState,
-  ReactChildren,
-  ReactElement,
-} from 'react'
+import React, { createContext, useState, ReactElement } from 'react'
 import { AsyncStorage } from 'react-native'
 import { loginApi, registerApi } from '../api/auth'
 
 interface AuthContextData {
   signed: boolean
-  currentUser: object | null
+  currentUser: I.CurrentUser | null
   login(email: string, password: string): Promise<void | { error: Error }>
   join(fields: fieldsProps): Promise<void | { error: Error }>
   logout(): void

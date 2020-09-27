@@ -7,6 +7,7 @@ export const StyledLabel = styled.Text`
   padding-left: 5px;
   height: 20px;
   width: 100%;
+  height: 25px;
   letter-spacing: 0.4px;
   color: #fff;
   margin-top: 10px;

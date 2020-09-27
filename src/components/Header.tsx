@@ -35,12 +35,11 @@ const Header = (): ReactElement => {
       <Link to="/Chats">
         <Text>Chats</Text>
       </Link>
+
       <Link to="/Profile">
         <Text>Profile</Text>
       </Link>
-      <Link to="/Chat Room">
-        <Text>Chat Room</Text>
-      </Link>
+
       <Feather name="power" color="#fff" size={20} onPress={handleLogout} />
     </HeaderContainer>
   )
