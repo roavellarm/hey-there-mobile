@@ -5,7 +5,7 @@ import * as Page from '../pages'
 
 const { Navigator, Screen } = createStackNavigator()
 
-const Router = (): ReactElement => {
+const AuthRouter = (): ReactElement => {
   return (
     <Navigator
       screenOptions={{
@@ -24,4 +24,4 @@ const Router = (): ReactElement => {
   )
 }
 
-export default Router
+export default AuthRouter

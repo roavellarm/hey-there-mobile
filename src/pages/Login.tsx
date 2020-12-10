@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { useState, useContext } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import AuthContext from '../contexts/auth'
@@ -6,13 +7,15 @@ import * as C from '../components'
 const Login = () => {
   const { login } = useContext(AuthContext)
   const { navigate } = useNavigation()
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [email, setEmail] = useState('juju@gmail.com')
+  const [password, setPassword] = useState('Juju@123')
 
   async function handleLogin() {
     const { error } = await login(email, password)
 
     if (error) return { error }
+
+    console.log('feito')
 
     return navigate('AuthRouter', { screen: 'Chats' })
   }

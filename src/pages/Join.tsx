@@ -6,13 +6,13 @@ import * as C from '../components'
 const Join = () => {
   const { join } = useContext(AuthContext)
   const { navigate } = useNavigation()
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [name, setName] = useState('Angela')
+  const [email, setEmail] = useState('angela@gmail.com')
+  const [password, setPassword] = useState('Angela@123')
 
   async function handleJoin() {
     await join({ name, email, password })
-
+    // signed = true
     return navigate('AuthRouter', { screen: 'Chat Room' })
   }
 

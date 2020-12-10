@@ -35,9 +35,11 @@ export const AuthProvider = ({
         JSON.stringify(data.currentUser)
       )
 
+      alert('Login efetuado com Sucesso!')
+
       return setCurrentUser(data.currentUser)
     } catch (error) {
-      return { error }
+      return alert('Email ou Senha incorretos!!')
     }
   }
 
@@ -50,6 +52,7 @@ export const AuthProvider = ({
         'currentUser',
         JSON.stringify(data.currentUser)
       )
+
       return setCurrentUser(data.currentUser)
     } catch (error) {
       return { error }
